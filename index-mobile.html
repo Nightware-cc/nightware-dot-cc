@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <title>Nightware.cc ‎‎‎‎ </title>
+
+  <link href="css/mobile-style.css" rel="stylesheet" type="text/css" />
+
+  <meta name="twitter:card" content="summary_image" />
+  <meta name="twitter:image" content="https://nightware.russiandev.repl.co/assets/embed1.gif">
+  <meta name="twitter:image:src" content="https://nightware.russiandev.repl.co/assets/favicon.png">
+  <meta property="og:title" content="Nightware Services​‌​‌​‍‍​‍‌​​⁠‍​​‌‌​⁠‌‍⁠⁠‌‌⁠⁠⁠​" />
+  <meta property="og:description"
+    content="A trusted shop for all your internet needs since 2020! You need it? We probably have it! :)" />
+  <meta name="theme-color" content="#9f58fc" />
+
+  <link type="application/json+oembed" href="https://nightware.russiandev.repl.co/oembed.json" />
+
+</head>
+
+<body>
+  <!--
+  QAEZZ--
+    I HAVE NO IDEA WTF IM DOING, REAL SHIT!
+
+    JUST DONT LOOK AT THE CSS FILE, ITS AWFUL. NOT TO MENTION THE JS FILE. THANKS!
+  -->
+
+  <!--<hr width="1" size="500" />-->
+
+  <div id="click-to-enter">
+    <a
+      onclick="element = document.getElementById('click-to-enter'); element.classList.add('fade-out'); playSong(getRandomSong(songArr));">Click
+      to
+      Enter!</a>
+  </div>
+
+  <div id="song-shit">
+    <span>
+      <p id="now-playing">Now Playing: </p>
+      <p id="now-playing-name">Artist · Song Title</p>
+    </span>
+    <input type="range" id="volume-slider" min="0" max="10" step="1" value="3" />
+    <div id="music-control">
+      <p id="previous-song">&lt;&lt;</p>
+      <p id="next-song">&gt;&gt;</p>
+    </div>
+  </div>
+
+  <div id="particle">
+    <div id="middle-shit">
+      <div id="middle-div">
+        <span>
+          <img id="middle-logo" src="assets/favicon.png" />
+          <div class="middle-link-div">
+            <div id="assign-me-links">
+              <a class="middle-link link" onclick="loadLinks('products');">Products</a>
+              <a class="middle-link link" href="https://discord.gg/FhbEGyRNeg" target="_blank">Discord</a>
+              <a class="middle-link link" onclick="loadLinks('contact');">Contact</a>
+            </div>
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div id="vouches">
+    <div id="assign-me-vouches">
+      <i id="vouches-quote">"+rep extremely fast and cheap services"</i>
+      <strong id="vouches-customer"> - Customer#0000</strong>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2023 All rights reserved by Pathetic and QÆZZ</p>
+  </footer>
+
+  <!--
+  ################################
+  ##### INLINE STYLE W/ BAR ######
+  ################################
+  
+  <div id="middle-shit">
+    <span id="inline-shit">
+      <img id="middle-logo" src="assets/favicon.png" />
+      <div id="pipe"></div>
+      <a>Products</a>
+      <a href="https://discord.gg/FhbEGyRNeg" target="_blank">Discord</a>
+      <a>Contact</a>
+    </span>
+  </div>
+  -->
+
+
+  <script src="script.js"></script>
+  <script src="particles.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.js"></script>
+</body>
+
+</html>
