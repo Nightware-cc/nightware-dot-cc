@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text&display=swap');
+
+:root {
+    --background-color: #111111;
+    --border-color: rgb(159, 88, 252);
+    --hover-color: rgb(190, 150, 255);
+    --cb-transition: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+* {
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox */
+    user-select: none;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: 'Golos Text', sans-serif;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-color: var(--background-color);
+    overflow-x: hidden;
+}
+
+hr {
+    position: absolute;
+    z-index: 100000000;
+    left: 50%;
+    right: 50%;
+    transform: traclate(-50%, 50%);
+    height: 100%;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.vertical-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.link {
+    cursor: pointer;
+    box-shadow: 0 0 10px var(--border-color);
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: x-large;
+    transition: .2s all ease;
+    /* flex: 1; */
+    min-width: 125px;
+    text-align: center;
+}
+.link:hover {
+    box-shadow: 0 0 10px var(--hover-color);
+}

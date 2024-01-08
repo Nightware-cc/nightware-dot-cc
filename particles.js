@@ -97,4 +97,4 @@ var config = {
   "retina_detect": true
 };
 
-console.info("[✓] Particles Loaded\n\nQAEZZ: I have no idea wtf im doing...");
+console.info("[✓] Particles Loaded");
