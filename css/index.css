@@ -17,13 +17,11 @@
 }
 
 #content {
-  border: 1px solid blue;
   height: 100%;
   width: 100%;
 }
 
 #middle-island {
-  border: 1px solid red;
   width: 50%;
   height: 100vh;
   display: flex;
@@ -43,14 +41,47 @@
 #middle-logo {
   width: 45%;
   display: block;
-  /* margin: auto; */
-  border: 1px dotted yellow;
   transition: filter .5s ease, transform .5s cubic-bezier(.35, .31, .17, 1.4);
 }
 
 #middle-logo:hover {
   transform: scale(1.1);
   filter: drop-shadow(0 0 0.35rem rgb(164, 106, 255));
+}
+
+#music-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 25%;
+  padding: 0 5px;
+  min-width: 125px;
+  opacity: .8;
+}
+
+#music-player h3 {
+  color: rgba(200, 200, 200, .9);
+  font-size: .95em;
+}
+
+#music-player h2 {
+  font-size: 1.3em
+}
+
+#music-player #controls {
+  display: inline-flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  width: 100%;
+}
+
+#music-player i {
+  cursor: pointer;
+  transition: .2s all var(--cb-transition);
+}
+
+#music-player i:hover {
+  opacity: .5;
 }
 
 footer {

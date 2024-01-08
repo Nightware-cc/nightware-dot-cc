@@ -28,6 +28,8 @@
 
   <link type="application/json+oembed" href="https://nightware.cc/oembed.json" />
 
+  <script src="https://kit.fontawesome.com/bbd5e05e51.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -38,6 +40,16 @@
       This site utilizes JavaScript, many features WILL be broken.
     </div>
   </noscript>
+
+  <div id="music-player">
+    <h3 id="song-artist">HOME</h3>
+    <h2 id="song-name">Resonance</h2>
+    <div id="controls">
+      <i id="previous-song" class="fa-xl fa-solid fa-backward"></i>
+      <i onclick="toggleMusic();" id="play-pause" class="fa-xl fa-solid fa-play first-run"></i>
+      <i id="next-song" class="fa-xl fa-solid fa-forward"></i>
+    </div>
+  </div>
 
   <div class="vertical-flex" id="content">
     <div id="middle-island">
@@ -51,9 +63,11 @@
   </div>
 
   <footer>
-    <p>© 2024 All rights reserved by <a href="https://qaezz.dev" target="_blank">QAEZZ</a> and Pathetic.<br/>This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.</p>
+    <p>© 2024 All rights reserved by <a href="https://qaezz.dev" target="_blank">QAEZZ</a> and Pathetic.<br />This work
+      is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.</p>
   </footer>
 
+  <script src="player.js" type="text/javascript"></script>
   <script src="script.js" type="text/javascript"></script>
   <script src="particles.js" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.js" type="text/javascript"></script>
