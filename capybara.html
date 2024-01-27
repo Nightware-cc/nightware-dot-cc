@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clappy Blappy</title>
+  <meta property="og:image" content="https://nightware.cc/assets/capybara.png" />
+  <meta name="twitter:image" content="https://nightware.cc/assets/capybara.png" />
+  <style>
+    body {
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      background: #000000;
+
+      filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000', GradientType=1);
+    }
+
+    img {
+      position: absolute;
+      width: 400px;
+      height: 176px;
+    }
+
+    #enterScreen {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      color: #fff;
+      font-size: 24px;
+      text-align: center;
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 5px;
+      display: block;
+    }
+
+    #enterScreen:hover {
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+  </style>
+</head>
+<body>
+
+<div id="enterScreen" onclick="enterFullscreen()">
+  Click to Enter 
+</div>
+
+<img src="/assets/capybara.png" alt="Capybara Image" id="imageContainer" style="display: none;">
+
+<script>
+  function enterFullscreen() {
+    const docEl = document.documentElement;
+    const enterScreen = document.getElementById('enterScreen');
+    const imageContainer = document.getElementById('imageContainer');
+
+    if (docEl.requestFullscreen) {
+      docEl.requestFullscreen();
+    } else if (docEl.mozRequestFullScreen) {
+      docEl.mozRequestFullScreen();
+    } else if (docEl.webkitRequestFullscreen) {
+      docEl.webkitRequestFullscreen();
+    } else if (docEl.msRequestFullscreen) {
+      docEl.msRequestFullscreen();
+    }
+
+    enterScreen.style.display = 'none';
+    imageContainer.style.display = 'block';
+  }
+
+  function exitFullscreen() {
+    const imageContainer = document.getElementById('imageContainer');
+
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
+
+    imageContainer.style.display = 'none';
+    document.getElementById('enterScreen').style.display = 'block';
+  }
+</script>
+
+<script>
+    var img = document.querySelector('img'),
+
+      win = window,
+      ww = win.innerWidth,
+      wh = win.innerHeight,
+      translateX = Math.floor((Math.random() * ww) + 1),
+      translateY = Math.floor((Math.random() * wh) + 1),
+      imgWidth = img.width,
+      imgHeight = img.height,
+      imgTop = img.offsetTop,
+      imgLeft = img.offsetLeft,
+      xMin = -imgLeft,
+      yMin = -imgTop,
+      xMax = win.innerWidth - imgLeft - imgWidth,
+      yMax = win.innerHeight - imgTop - imgHeight,
+      request = null,
+      direction = 'se',
+      speed = 4,
+      timeout = null;
+  
+    init();
+  
+    window.addEventListener('resize', function() {
+      clearTimeout(timeout);
+      timeout = setTimeout(update, 100);
+    }, false);
+  
+    function init() {
+      request = requestAnimationFrame(init);
+      move();
+    }
+  
+    function update() {
+      xMin = -imgLeft;
+      yMin = -imgTop;
+      xMax = win.innerWidth - imgLeft - imgWidth;
+      yMax = win.innerHeight - imgTop - imgHeight;
+    }
+  
+    function move() {
+      setDirection();
+      setStyle(img, {
+        transform: 'translate3d(' + translateX + 'px, ' + translateY + 'px, 0)',
+      });
+    }
+  
+    function setDirection() {
+      switch (direction) {
+        case 'ne':
+          translateX += speed;
+          translateY -= speed;
+          break;
+        case 'nw':
+          translateX -= speed;
+          translateY -= speed;
+          break;
+        case 'se':
+          translateX += speed;
+          translateY += speed;
+          break;
+        case 'sw':
+          translateX -= speed;
+          translateY += speed;
+          break;
+      }
+      setLimits();
+    }
+  
+    function setLimits() {
+      if (translateY <= yMin) {
+        if (direction == 'nw') {
+          direction = 'sw';
+        } else if (direction == 'ne') {
+          direction = 'se';
+        }
+        switchColor();
+      }
+      if (translateY >= yMax) {
+        if (direction == 'se') {
+          direction = 'ne';
+        } else if (direction == 'sw') {
+          direction = 'nw';
+        }
+        switchColor();
+      }
+      if (translateX <= xMin) {
+        if (direction == 'nw') {
+          direction = 'ne';
+        } else if (direction == 'sw') {
+          direction = 'se';
+        }
+        switchColor();
+      }
+      if (translateX >= xMax) {
+        if (direction == 'ne') {
+          direction = 'nw';
+        } else if (direction == 'se') {
+          direction = 'sw';
+        }
+        switchColor();
+      }
+    }
+  
+    function switchColor() {
+      var color = Math.floor((Math.random() * 25) + 1);
+    
+      while( color == currentColor ) {
+        color = Math.floor((Math.random() * 25) + 1)
+      }
+    
+      setStyle(img, {
+        filter: 'invert(100%)', // Applying an invert filter as a simple example
+      });
+    
+      currentColor = color;
+    }
+  
+    function getVendor() {
+      var ua = navigator.userAgent.toLowerCase(),
+        match = /opera/.exec(ua) || /msie/.exec(ua) || /firefox/.exec(ua) || /(chrome|safari)/.exec(ua) || /trident/.exec(ua),
+        vendors = {
+          opera: '-o-',
+          chrome: '-webkit-',
+          safari: '-webkit-',
+          firefox: '-moz-',
+          trident: '-ms-',
+          msie: '-ms-',
+        };
+  
+      return vendors[match[0]];
+    };
+  
+    function setStyle(element, properties) {
+      var prefix = getVendor(),
+        property, css = '';
+      for (property in properties) {
+        css += property + ': ' + properties[property] + ';';
+        css += prefix + property + ': ' + properties[property] + ';';
+      }
+      element.style.cssText += css;
+    }
+  </script>
+  
+</body>
+</html>
