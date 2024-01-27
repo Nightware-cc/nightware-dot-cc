@@ -1,5 +1,6 @@
 var titleText = document.title;
 let lastVouch = "";
+var assignMeVouches = document.getElementById("assignMeVouches");
 
 vouchArr = [
   ['+rep fast, friendly and halal', 'eth#1818'],
@@ -15,7 +16,6 @@ vouchArr = [
   ['+rep fast asf cashap for nl sub', 'fartsniff#0062'],
   ['+rep cheap as hell but super hq, methods are recent and work like promised', 'rxchobeats#3097'],
   ['+rep gave me steam wallet code', 'Miska#6564'],
-  ['+rep again this guy literally is the best reseller I\'ve ever worked with he\'s the most patient person and his prices are like your not even using a reseller definitely would recommend!', 'Hash#0002'],
   ['boss ass mofo hooked me up with a resell in 2 minutes', 'log#0021'],
   ['vouch for @Pathetic#0420 exchanged twice, very legit +rep, would highly recommend ❤️', 'AESI#3191'],
   ['+rep @Pathetic#0420 is very fast took me litteraly 1 minute :D', 'laP#0048'],
@@ -80,39 +80,20 @@ function createVouchElement(vouch) {
 }
 
 async function rotateVouches() {
-  // assignMeVouches.classList.add("fade-out");
-  // await sleep(1000);
-  // assignMeVouches.innerHTML = getRandomVouch(vouchArr);
-  // assignMeVouches.classList.remove("fade-out");
-  // assignMeVouches.classList.add("fade-in");
-  // await sleep(1000);
-  // assignMeVouches.classList.remove("fade-in");
 
-  // setTimeout("rotateVouches()", 5000);
   let vouch = getRandomVouch(vouchArr);
   let vouchElement = createVouchElement(vouch);
-
   let currentVouch = document.getElementById('vouch');
-  currentVouch.classList.remove('fade-in');
-  currentVouch.classList.add('fade-out');
-  await sleep(1000);
-  currentVouch.remove();
 
-  document.body.appendChild(vouchElement);
-  vouchElement.style.visibility = 'visible';
-  vouchElement.classList.add('fade-in');
+  assignMeVouches.classList.add("fade-out");
   await sleep(1000);
-  vouchElement.classList.remove('fade-in'); // Fix the typo here
-  setTimeout(rotateVouches, 5000); // Also corrected the syntax for setTimeout
+  assignMeVouches.removeChild(currentVouch);
+  assignMeVouches.appendChild(vouchElement);
+  document.getElementById('vouch').style.visibility = 'visible';
+  assignMeVouches.classList.remove("fade-out");
+  assignMeVouches.classList.add("fade-in");
+  await sleep(1000);
+  assignMeVouches.classList.remove("fade-in");
 
+  setTimeout("rotateVouches()", 5000);
 }
-
-/*
-<div id="vouches">
-    <div>
-      <i id="vouches-quote">+rep extremely fast and cheap services</i>
-      <br />
-      <strong id="vouches-customer">Customer#0000
-    </div>
-  </div>
-*/
