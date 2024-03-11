@@ -5,6 +5,8 @@ const nextSongButton = document.getElementById('next-song');
 const songNameField = document.getElementById('song-name');
 const songArtistField = document.getElementById('song-artist');
 
+const enterButton = document.getElementById('js-enter');
+
 var audio;
 var songIndex;
 
@@ -134,3 +136,10 @@ function playSong(songData) {
         console.log(`Played Index: ${songIndex}`);
     });
 }
+
+enterButton.addEventListener("click", async function (e) {
+    toggleMusic();
+    enterButton.parentElement.classList.add('fade-out');
+    await sleep(2000);
+    enterButton.parentElement.remove();
+});

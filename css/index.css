@@ -1,10 +1,28 @@
-/* #particle {
+#pre-enter {
+  position: absolute;
+  z-index: 99999;
   top: 0;
-  position: fixed;
+  left: 0;
   width: 100%;
-  height: 100vh;
-  background: #111111;
-} */
+  height: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#pre-enter h2 {
+  font-size: 5em;
+  -webkit-animation: breathing 5s ease-out infinite normal;
+  animation: breathing 5s ease-out infinite normal;
+  cursor: pointer;
+  color: var(--border-color);
+  transition: all .5s;
+}
+
+#pre-enter h2:hover {
+  filter: drop-shadow(0 0 0.5rem white)
+}
 
 #particle {
   position: fixed;
@@ -12,7 +30,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Place it below the content */
+  z-index: -1;
+  /* Place it below the content */
   background-color: #111111;
 }
 
@@ -100,16 +119,20 @@
   width: fit-content;
   gap: 5px;
 }
+
 #vouch p:first-of-type {
   font-weight: normal;
   font-style: italic;
 }
+
 #vouch p:first-of-type::before {
   content: '"';
 }
+
 #vouch p:first-of-type::after {
   content: '"';
 }
+
 #vouch p {
   font-weight: bolder;
 }
@@ -123,4 +146,7 @@ footer {
   text-align: center;
   background-color: black;
 }
-footer a { text-decoration: underline; }
+
+footer a {
+  text-decoration: underline;
+}
